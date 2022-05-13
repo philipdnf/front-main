@@ -1,0 +1,21 @@
+version: 0.2
+env:
+  variables:
+    APP_NAME: "front-main"
+    BUILD_CONF: "development"
+phases:
+  install:
+    commands:
+      - echo install node lts
+      - n lts
+      - echo install process started
+      - npm install && npm install -g @angular/cli
+  build:
+    commands:
+      - echo "build process started now $BUILD_CONF ${BUILD_CONF}"
+      - ng build --configuration ${BUILD_CONF}
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: dist/$APP_NAME
